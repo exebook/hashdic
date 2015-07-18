@@ -8,16 +8,20 @@ For my [jslike][1] library (JavaScript like convenient `var` in C++) I needed a 
 
 The goal was to have a solution fast enough, (not more than 3 times slower than best industrial quality solutions), but with only a hundred lines of code so that any living person could comprehend the code entirely, thus making jslike an education-friendly project.
 
-My first attempt was [trie4d][2], which was quite good, but then I decided to give a try to old good hash table. I created this hash table, which is about the same speed but uses few times less memory. Unfortunately the implementation is almost 200 lines of code, compared to under 100 of trie. 
+My first attempt was [trie4d][2], which was quite fast but, but then I decided to give a try to old good hash tables. I created this hash table, which is about the same speed but uses few times less memory.
+
+Trie still has an advantage of that it does not need to resize, thus giving more leveled performance, and of course it allows to search by prefix (descend from current node). But huge advantage of this hash table is that it uses almost 4 times less memory than trie4d of some examples.
 
 [2]:https://github.com/exebook/trie4d
 
 Public domain MurMur hash function is used, but can be replaced with better hash function when/if one will be found one day on this planet.
 
-I compared performance with v8 objects, which are fastest I know (let me know if you know better key/value dictionary implementation), and hashdic is twice as fast on insertion and 1.7 slower on lookup. (And probably 100 times less code). 
+I compared performance with v8 JavaScript objects, which are fastest I know (let me know if you know better key/value dictionary implementation), and hashdic is twice faster on insertion and 1.7 slower on lookup. (And probably 100 times less code). This comparison cannot be take seriously, but gives some approximation of the efficiency.
 
 As for memory, on my test of 96680 english words from English dictionary, with 
 average size of a key 10.169 and int64 value, the structure used  6,427,538 bytes.
+
+It has few global variables to configure resize parameters, i.e. resize factor and resize threshold.
 
 ###Example usage (hello.cpp)
 

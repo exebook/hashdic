@@ -1,6 +1,6 @@
 #hashdic
 
-##fast, small (200 LOC), C/C++, hash table based key/value dictionary, auto-grow, MurMur, linked list based buckets.
+##fast, small (200 LOC), C/C++, hash table based key/value dictionary, auto-grow, MurMur, linked list based buckets, zero-dependency.
 
 For my [jslike][1] library (JavaScript like convenient `var` in C++) I needed a dictionary solution to lookup keys inside objects.
 

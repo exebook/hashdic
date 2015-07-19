@@ -1,5 +1,6 @@
+//clang++ hello.cpp -o hello
 #include "iostream"
-#include "hash.h"
+#include "hashdic.h"
 
 using namespace std;
 
